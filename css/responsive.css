@@ -1,0 +1,527 @@
+/* ================================
+   Responsive Design
+   Organic Theme
+   ================================ */
+
+/* ================================
+   Tablet (900px and below)
+   ================================ */
+@media (max-width: 900px) {
+    /* Hero adjustments */
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-lg);
+        padding: calc(100px + var(--space-lg)) var(--space-md) var(--space-lg);
+    }
+
+    .hero-content {
+        max-width: 100%;
+        order: 2;
+    }
+
+    .hero-image-container {
+        order: 1;
+    }
+
+    .hero-image-frame {
+        width: 240px;
+        height: 300px;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
+    /* About layout */
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .about-text {
+        max-width: 100%;
+    }
+
+    /* Projects grid */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-featured {
+        padding: var(--space-lg);
+    }
+}
+
+/* ================================
+   Tablet (768px and below)
+   ================================ */
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-md);
+        transform: translateX(-100%);
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        transform: translateX(0);
+    }
+
+    .nav-link {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+        transform: rotate(-45deg) translate(0px, 0px);
+    }
+
+    /* Section spacing */
+    .section {
+        padding: var(--space-xl) 0;
+    }
+
+    /* Journey timeline */
+    .journey-path {
+        padding-left: var(--space-lg);
+    }
+
+    .journey-marker {
+        left: calc(var(--space-lg) * -1);
+        width: 20px;
+        height: 20px;
+    }
+
+    .journey-path::before {
+        left: 9px;
+    }
+
+    /* Connect links */
+    .connect-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .connect-link {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* Organic shapes */
+    .organic-shape-1 {
+        width: 400px;
+        height: 400px;
+    }
+
+    .organic-shape-2 {
+        width: 350px;
+        height: 350px;
+    }
+
+    .organic-shape-3 {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* ================================
+   Mobile (480px and below)
+   ================================ */
+@media (max-width: 480px) {
+    /* Typography scale down */
+    :root {
+        --space-lg: 2rem;
+        --space-xl: 3rem;
+        --space-2xl: 5rem;
+    }
+
+    .container {
+        padding: 0 var(--space-sm);
+    }
+
+    /* Navigation */
+    .nav-container {
+        padding: 0.75rem var(--space-sm);
+    }
+
+    .nav-logo {
+        font-size: 1.25rem;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+        padding: calc(80px + var(--space-md)) var(--space-sm) var(--space-md);
+        min-height: auto;
+    }
+
+    .hero-greeting {
+        font-size: 1rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.25rem, 10vw, 3rem);
+    }
+
+    .hero-tagline {
+        font-size: 1.125rem;
+        margin-bottom: var(--space-md);
+    }
+
+    .hero-image-frame {
+        width: 180px;
+        height: 220px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Section titles */
+    .section-title {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+    }
+
+    .section-label {
+        font-size: 0.75rem;
+    }
+
+    /* Projects */
+    .project-card {
+        padding: var(--space-md);
+    }
+
+    .project-featured {
+        padding: var(--space-md);
+    }
+
+    .project-featured .project-title {
+        font-size: 1.5rem;
+    }
+
+    .project-title {
+        font-size: 1.25rem;
+    }
+
+    .project-description {
+        font-size: 0.9375rem;
+    }
+
+    /* About */
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .about-card {
+        padding: var(--space-md);
+    }
+
+    /* Journey */
+    .journey-path {
+        padding-left: var(--space-md);
+    }
+
+    .journey-marker {
+        left: calc(var(--space-md) * -1);
+        width: 16px;
+        height: 16px;
+    }
+
+    .journey-path::before {
+        left: 7px;
+    }
+
+    .journey-content {
+        padding: var(--space-sm);
+    }
+
+    .journey-role {
+        font-size: 1.125rem;
+    }
+
+    /* Connect */
+    .connect-text {
+        font-size: 1rem;
+    }
+
+    .connect-link {
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .connect-link-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: var(--space-md) 0;
+    }
+
+    .footer-content {
+        font-size: 0.875rem;
+    }
+
+    /* Background performance */
+    .organic-shape {
+        opacity: 0.2;
+    }
+
+    .organic-shape-1 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .organic-shape-2 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .organic-shape-3 {
+        display: none;
+    }
+
+    .grain-overlay {
+        opacity: 0.02;
+    }
+}
+
+/* ================================
+   Large Desktop (1200px and above)
+   ================================ */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1100px;
+    }
+
+    .hero {
+        gap: var(--space-2xl);
+    }
+
+    .hero-image-frame {
+        width: 360px;
+        height: 450px;
+    }
+}
+
+/* ================================
+   Ultra-wide (1600px and above)
+   ================================ */
+@media (min-width: 1600px) {
+    :root {
+        font-size: 18px;
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+}
+
+/* ================================
+   Landscape Mobile
+   ================================ */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: var(--space-lg) var(--space-md);
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-content {
+        order: 1;
+        text-align: left;
+    }
+
+    .hero-image-container {
+        order: 2;
+    }
+
+    .hero-image-frame {
+        width: 200px;
+        height: 250px;
+    }
+
+    .hero-cta {
+        justify-content: flex-start;
+    }
+}
+
+/* ================================
+   Touch Device Optimizations
+   ================================ */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .btn {
+        min-height: 48px;
+    }
+
+    .nav-link {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+
+    .connect-link {
+        min-height: 56px;
+    }
+
+    /* Disable complex hover effects */
+    .project-card:hover {
+        transform: none;
+    }
+
+    .project-card:hover::before {
+        transform: scaleX(0);
+    }
+
+    .project-card:hover::after {
+        opacity: 0;
+    }
+
+    .journey-content:hover {
+        transform: none;
+    }
+
+    .connect-link:hover {
+        transform: none;
+    }
+
+    .about-card:hover {
+        transform: none;
+    }
+
+    /* Add active states instead */
+    .project-card:active {
+        transform: scale(0.98);
+    }
+
+    .btn:active {
+        transform: scale(0.96);
+    }
+}
+
+/* ================================
+   Print Styles
+   ================================ */
+@media print {
+    .nav,
+    .mobile-menu-toggle,
+    .organic-bg {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .section {
+        page-break-inside: avoid;
+        padding: 2rem 0;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+
+    a {
+        text-decoration: underline;
+        color: black;
+    }
+
+    .btn {
+        border: 2px solid black;
+        background: transparent;
+        color: black;
+    }
+}
+
+/* ================================
+   High Contrast Mode
+   ================================ */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .project-card,
+    .about-card,
+    .journey-content,
+    .connect-link {
+        border-width: 2px;
+    }
+
+    .btn {
+        border-width: 3px;
+    }
+}
+
+/* ================================
+   Reduced Motion
+   ================================ */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .organic-shape {
+        animation: none !important;
+    }
+
+    .hero-image-frame {
+        animation: none !important;
+    }
+
+    .hero-content,
+    .hero-image-container {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+    }
+
+    .section {
+        opacity: 1;
+        transform: none;
+    }
+
+    .journey-item {
+        opacity: 1;
+        transform: none;
+    }
+
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
