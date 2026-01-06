@@ -179,16 +179,20 @@
         .main {
             overflow-y: auto;
             padding: 3rem 4rem;
+            display: flex;
+            flex-direction: column;
         }
 
         /* TAB PANELS */
         .tab-panel {
             display: none;
             animation: fadeIn 0.3s ease;
+            flex: 1;
         }
 
         .tab-panel.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
         }
 
         @keyframes fadeIn {
@@ -225,83 +229,23 @@
         }
 
         /* HOME PANEL */
+        #home.tab-panel {
+            justify-content: center;
+            align-items: flex-start;
+        }
+
         .home-content {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .home-text {
-            max-width: 520px;
-        }
-
-        .home-greeting {
-            font-family: 'Fraunces', serif;
-            font-size: 1.125rem;
-            font-style: italic;
-            color: var(--terracotta);
-            margin-bottom: 0.5rem;
-        }
-
-        .home-title {
-            font-family: 'Fraunces', serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 600;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .home-description {
-            font-size: 1.125rem;
-            color: var(--text);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .home-cta {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.875rem 1.75rem;
-            font-size: 0.9375rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-            font-family: inherit;
-        }
-
-        .btn-primary {
-            background: var(--terracotta);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--terracotta-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--ink);
-            border: 2px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--terracotta);
-            color: var(--terracotta);
+            max-width: 560px;
         }
 
         .home-image {
-            width: 280px;
-            height: 350px;
+            width: 140px;
+            height: 140px;
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 12px 48px rgba(92, 64, 51, 0.15);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 12px 40px rgba(92, 64, 51, 0.18);
+            border: 3px solid var(--cream-dark);
         }
 
         .home-image img {
@@ -310,17 +254,36 @@
             object-fit: cover;
         }
 
+        .home-greeting {
+            font-family: 'Fraunces', serif;
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .home-greeting span {
+            color: var(--terracotta);
+        }
+
+        .home-description {
+            font-size: 1.0625rem;
+            color: var(--text);
+            line-height: 1.9;
+        }
+
         /* PROJECTS PANEL */
         .projects-grid {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
         .project-card {
             background: var(--cream-dark);
             border-radius: 16px;
-            padding: 1.75rem;
+            overflow: hidden;
             transition: all 0.2s ease;
             cursor: pointer;
             border: 1px solid transparent;
@@ -330,12 +293,31 @@
             background: var(--cream);
             border-color: var(--terracotta);
             box-shadow: 0 8px 32px rgba(92, 64, 51, 0.1);
+            transform: translateY(-4px);
         }
 
-        .project-card.featured {
-            background: var(--cream);
-            border: 1px solid var(--border);
-            padding: 2.5rem;
+        .project-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-image-placeholder {
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
         }
 
         .project-meta {
@@ -367,198 +349,93 @@
             margin-bottom: 0.5rem;
         }
 
-        .project-card.featured .project-title {
-            font-size: 1.75rem;
-        }
-
         .project-description {
             color: var(--text);
             font-size: 0.9375rem;
             line-height: 1.6;
-            margin-bottom: 1rem;
         }
 
-        .project-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            padding: 4px 12px;
-            background: var(--cream-dark);
-            color: var(--muted);
-            border-radius: 20px;
-        }
-
-        .project-card:hover .tag {
-            background: var(--cream-dark);
-        }
-
-        /* ABOUT PANEL */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 4rem;
-        }
-
-        .about-text {
-            font-size: 1.0625rem;
-            line-height: 1.9;
-            color: var(--text);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .about-card {
-            background: var(--cream-dark);
-            border-radius: 16px;
-            padding: 1.75rem;
-        }
-
-        .about-card-label {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-            margin-bottom: 1.25rem;
-        }
-
-        .about-list {
-            list-style: none;
-        }
-
-        .about-list li {
-            padding: 0.875rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .about-list li:last-child {
-            border-bottom: none;
-        }
-
-        .about-role {
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .about-place {
-            font-size: 0.875rem;
-            color: var(--muted);
-        }
-
-        .about-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--terracotta);
-            font-weight: 600;
-            font-size: 0.9375rem;
-            margin-top: 1.5rem;
-        }
-
-        .about-link:hover {
-            text-decoration: underline;
-        }
-
-        /* JOURNEY PANEL */
-        .journey-list {
-            max-width: 600px;
-        }
-
-        .journey-item {
-            display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 2rem;
-            padding: 1.25rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .journey-year {
-            font-family: 'Fraunces', serif;
-            font-size: 0.9375rem;
-            color: var(--terracotta);
-        }
-
-        .journey-role {
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .journey-org {
-            font-size: 0.875rem;
-            color: var(--muted);
-        }
-
-        .journey-divider {
-            padding: 1.5rem 0;
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-size: 0.875rem;
-            color: var(--muted);
-        }
-
-        /* CONNECT PANEL */
-        .connect-content {
-            max-width: 500px;
-        }
-
-        .connect-text {
-            font-size: 1.125rem;
-            color: var(--text);
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-        }
-
-        .connect-links {
+        /* WRITING PANEL */
+        .writing-grid {
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
         }
 
-        .connect-link {
+        .writing-card {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 1.5rem;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.5rem;
             background: var(--cream-dark);
-            border-radius: 12px;
+            border-radius: 16px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .writing-card:hover {
+            background: var(--cream);
+            border-color: var(--terracotta);
+            box-shadow: 0 8px 32px rgba(92, 64, 51, 0.1);
+            transform: translateX(8px);
+        }
+
+        .writing-number {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--terracotta);
+            opacity: 0.6;
+            flex-shrink: 0;
+        }
+
+        .writing-card:hover .writing-number {
+            opacity: 1;
+        }
+
+        .writing-card-content {
+            flex: 1;
+        }
+
+        .writing-card-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.375rem;
+            line-height: 1.3;
+        }
+
+        .writing-card-excerpt {
+            font-size: 0.875rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .view-more-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--terracotta);
+            padding: 0.75rem 0;
             transition: all 0.2s ease;
         }
 
-        .connect-link:hover {
-            background: var(--cream);
-            box-shadow: 0 4px 16px rgba(92, 64, 51, 0.1);
+        .view-more-link:hover {
+            color: var(--terracotta-dark);
+            gap: 0.75rem;
+        }
+
+        .view-more-link svg {
+            transition: transform 0.2s ease;
+        }
+
+        .view-more-link:hover svg {
             transform: translateX(4px);
-        }
-
-        .connect-icon {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--cream);
-            border-radius: 10px;
-            color: var(--ink);
-        }
-
-        .connect-link:hover .connect-icon {
-            background: var(--terracotta);
-            color: white;
-        }
-
-        .connect-platform {
-            font-weight: 600;
-        }
-
-        .connect-handle {
-            font-size: 0.875rem;
-            color: var(--muted);
         }
 
         /* RESPONSIVE */
@@ -609,28 +486,13 @@
             }
 
             .home-content {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+                align-items: center;
                 text-align: center;
             }
 
-            .home-image {
-                width: 200px;
-                height: 250px;
-                margin: 0 auto;
-                order: -1;
-            }
-
-            .home-cta {
-                justify-content: center;
-            }
-
-            .about-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .journey-item {
-                grid-template-columns: 80px 1fr;
-                gap: 1rem;
             }
         }
     </style>
@@ -660,24 +522,12 @@
                     </svg>
                     Projects
                 </li>
-                <li class="nav-tab" data-tab="about">
+                <li class="nav-tab" data-tab="writing">
                     <svg class="nav-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="8" r="4"/>
-                        <path d="M20 21a8 8 0 00-16 0"/>
+                        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
                     </svg>
-                    About
-                </li>
-                <li class="nav-tab" data-tab="journey">
-                    <svg class="nav-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2v20M2 12h20"/>
-                    </svg>
-                    Journey
-                </li>
-                <li class="nav-tab" data-tab="connect">
-                    <svg class="nav-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/>
-                    </svg>
-                    Connect
+                    Writing
                 </li>
             </ul>
 
@@ -688,15 +538,11 @@
                             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                     </a>
-                    <a href="https://warpcast.com/limes.eth" target="_blank" class="social-link" title="Farcaster">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M3 7.5V5.25C3 4.56 3.56 4 4.25 4h15.5c.69 0 1.25.56 1.25 1.25V7.5h-1.5v10.25c0 .69-.56 1.25-1.25 1.25h-4.5v-1.5h4.25V7.5h-12v10h4.25v1.5h-4.5c-.69 0-1.25-.56-1.25-1.25V7.5H3z"/>
-                        </svg>
-                    </a>
-                    <a href="https://wibtal.com" target="_blank" class="social-link" title="Blog">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                    <a href="https://warpcast.com/dylanb.eth" target="_blank" class="social-link" title="Farcaster">
+                        <svg width="18" height="18" viewBox="0 0 1000 1000" fill="currentColor">
+                            <path d="M257.778 155.556H742.222V844.444H671.111V528.889H670.414C662.554 441.677 589.258 373.333 500 373.333C410.742 373.333 337.446 441.677 329.586 528.889H328.889V844.444H257.778V155.556Z"/>
+                            <path d="M128.889 253.333L157.778 351.111H182.222V746.667C169.949 746.667 160 756.616 160 768.889V795.556H155.556C143.283 795.556 133.333 805.505 133.333 817.778V844.444H382.222V817.778C382.222 805.505 372.273 795.556 360 795.556H355.556V768.889C355.556 756.616 345.606 746.667 333.333 746.667H306.667V253.333H128.889Z"/>
+                            <path d="M675.556 746.667C663.283 746.667 653.333 756.616 653.333 768.889V795.556H648.889C636.616 795.556 626.667 805.505 626.667 817.778V844.444H875.556V817.778C875.556 805.505 865.606 795.556 853.333 795.556H848.889V768.889C848.889 756.616 838.94 746.667 826.667 746.667V351.111H851.111L880 253.333H702.222V746.667H675.556Z"/>
                         </svg>
                     </a>
                 </div>
@@ -707,21 +553,13 @@
             <!-- HOME -->
             <div id="home" class="tab-panel active">
                 <div class="home-content">
-                    <div class="home-text">
-                        <span class="home-greeting">Hey, I'm</span>
-                        <h1 class="home-title">Dylan Brodeur</h1>
-                        <p class="home-description">
-                            I build things at the intersection of <em>crypto</em> and <em>community</em>.
-                            Currently working on peer-to-peer betting and fitness competitions.
-                        </p>
-                        <div class="home-cta">
-                            <button class="btn btn-primary" data-goto="projects">See my work</button>
-                            <button class="btn btn-secondary" data-goto="connect">Say hello</button>
-                        </div>
-                    </div>
                     <div class="home-image">
                         <img src="assets/images/profile.jpg" alt="Dylan Brodeur">
                     </div>
+                    <h2 class="home-greeting">Hi, I'm <span>Dylan</span></h2>
+                    <p class="home-description">
+                        I enjoy building crypto products, cultivating community, and fitness competitions. Currently I'm working on WannaBet and want to see it become an industry standard for signaling skin in the game.
+                    </p>
                 </div>
             </div>
 
@@ -732,185 +570,89 @@
                     <h2 class="panel-title">Projects</h2>
                 </div>
                 <div class="projects-grid">
-                    <article class="project-card featured">
-                        <div class="project-meta">
-                            <span class="project-status">Active</span>
-                            <span class="project-year">2025</span>
-                        </div>
-                        <h3 class="project-title">WannaBet</h3>
-                        <p class="project-description">
-                            Peer-to-peer betting with USDC escrow and judge-based resolution.
-                            Make friendly wagers with anyone, anywhere. Available as a Farcaster mini-app.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Crypto</span>
-                            <span class="tag">P2P</span>
-                            <span class="tag">Farcaster</span>
-                        </div>
-                    </article>
                     <article class="project-card">
-                        <div class="project-meta">
-                            <span class="project-year">2025</span>
+                        <div class="project-image">
+                            <img src="assets/images/wannabet.png" alt="WannaBet" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'project-image-placeholder\'>🎲</span>';">
                         </div>
-                        <h3 class="project-title">Farcaster's Library</h3>
-                        <p class="project-description">
-                            Book recommendations that connect readers with similar taste.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Social</span>
-                            <span class="tag">Books</span>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-status">Active</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">WannaBet</h3>
+                            <p class="project-description">
+                                Peer-to-peer betting with USDC escrow and judge-based resolution. Available as a Farcaster mini-app.
+                            </p>
                         </div>
                     </article>
+
                     <article class="project-card">
-                        <div class="project-meta">
-                            <span class="project-year">2025</span>
+                        <div class="project-image">
+                            <img src="assets/images/movieclub.png" alt="Movie Club" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'project-image-placeholder\'>🎬</span>';">
                         </div>
-                        <h3 class="project-title">SafeNotes</h3>
-                        <p class="project-description">
-                            Bringing transparency to DAO transactions. Used by ENS and Uniswap.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">DAO</span>
-                            <span class="tag">Governance</span>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">Movie Club</h3>
+                            <p class="project-description">
+                                Find films and friends by adding your favorite movies. Only on Farcaster.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-image">
+                            <img src="assets/images/safenotes.png" alt="SafeNotes" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'project-image-placeholder\'>🔒</span>';">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">SafeNotes</h3>
+                            <p class="project-description">
+                                Bringing transparency to DAO transactions. Used by ENS and Uniswap.
+                            </p>
                         </div>
                     </article>
                 </div>
             </div>
 
-            <!-- ABOUT -->
-            <div id="about" class="tab-panel">
+            <!-- WRITING -->
+            <div id="writing" class="tab-panel">
                 <div class="panel-header">
-                    <span class="panel-label">A bit about me</span>
-                    <h2 class="panel-title">About</h2>
+                    <span class="panel-label">Favorites</span>
+                    <h2 class="panel-title">Writing</h2>
                 </div>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p>
-                            I'm drawn to ideas that bring people together. Whether it's a friendly bet
-                            between friends or a fitness challenge that pushes a community forward,
-                            I love building tools that create shared experiences.
-                        </p>
-                        <p>
-                            In 2026, I'll be joining <strong>Network School</strong> to take WannaBet
-                            to the next level. Before crypto, I cut my teeth at PwC and Marcum —
-                            turns out understanding money is useful when you're trying to reinvent it.
-                        </p>
-                    </div>
-                    <div class="about-card">
-                        <span class="about-card-label">Currently</span>
-                        <ul class="about-list">
-                            <li>
-                                <div class="about-role">Founder</div>
-                                <div class="about-place">WannaBet</div>
-                            </li>
-                            <li>
-                                <div class="about-role">Ecosystem Steward</div>
-                                <div class="about-place">ENS</div>
-                            </li>
-                        </ul>
-                        <a href="https://wibtal.com" target="_blank" class="about-link">
-                            Read my writing →
-                        </a>
-                    </div>
+                <div class="writing-grid">
+                    <a href="https://wibtal.com/19" target="_blank" class="writing-card">
+                        <span class="writing-number">01</span>
+                        <div class="writing-card-content">
+                            <h3 class="writing-card-title">The Case for Betting on Yourself</h3>
+                            <p class="writing-card-excerpt">Why putting skin in the game changes everything about how you approach goals.</p>
+                        </div>
+                    </a>
+                    <a href="https://wibtal.com/46" target="_blank" class="writing-card">
+                        <span class="writing-number">02</span>
+                        <div class="writing-card-content">
+                            <h3 class="writing-card-title">Building in Public</h3>
+                            <p class="writing-card-excerpt">Lessons from sharing the journey of building WannaBet with the community.</p>
+                        </div>
+                    </a>
+                    <a href="https://wibtal.com/79" target="_blank" class="writing-card">
+                        <span class="writing-number">03</span>
+                        <div class="writing-card-content">
+                            <h3 class="writing-card-title">Community Over Competition</h3>
+                            <p class="writing-card-excerpt">How fitness challenges taught me the power of shared accountability.</p>
+                        </div>
+                    </a>
                 </div>
-            </div>
-
-            <!-- JOURNEY -->
-            <div id="journey" class="tab-panel">
-                <div class="panel-header">
-                    <span class="panel-label">Where I've been</span>
-                    <h2 class="panel-title">Journey</h2>
-                </div>
-                <div class="journey-list">
-                    <div class="journey-item">
-                        <span class="journey-year">2025 — Now</span>
-                        <div>
-                            <div class="journey-role">Founder</div>
-                            <div class="journey-org">WannaBet</div>
-                        </div>
-                    </div>
-                    <div class="journey-item">
-                        <span class="journey-year">2023 — Now</span>
-                        <div>
-                            <div class="journey-role">Ecosystem Steward</div>
-                            <div class="journey-org">ENS</div>
-                        </div>
-                    </div>
-                    <div class="journey-item">
-                        <span class="journey-year">2022 — 2023</span>
-                        <div>
-                            <div class="journey-role">Team Member</div>
-                            <div class="journey-org">Layer3</div>
-                        </div>
-                    </div>
-                    <div class="journey-item">
-                        <span class="journey-year">2020 — 2022</span>
-                        <div>
-                            <div class="journey-role">Accountant</div>
-                            <div class="journey-org">Marcum LLP</div>
-                        </div>
-                    </div>
-                    <div class="journey-item">
-                        <span class="journey-year">2019 — 2020</span>
-                        <div>
-                            <div class="journey-role">Associate</div>
-                            <div class="journey-org">PwC</div>
-                        </div>
-                    </div>
-                    <div class="journey-divider">Education</div>
-                    <div class="journey-item">
-                        <span class="journey-year">2019 — 2020</span>
-                        <div>
-                            <div class="journey-role">MS Information Management</div>
-                            <div class="journey-org">University of Tennessee</div>
-                        </div>
-                    </div>
-                    <div class="journey-item">
-                        <span class="journey-year">2015 — 2019</span>
-                        <div>
-                            <div class="journey-role">BS Accounting</div>
-                            <div class="journey-org">University of Tennessee</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CONNECT -->
-            <div id="connect" class="tab-panel">
-                <div class="panel-header">
-                    <span class="panel-label">Let's talk</span>
-                    <h2 class="panel-title">Connect</h2>
-                </div>
-                <div class="connect-content">
-                    <p class="connect-text">
-                        Always happy to chat about crypto, fitness, or whatever you're building.
-                        Find me on these platforms.
-                    </p>
-                    <div class="connect-links">
-                        <a href="https://x.com/gofordylan" target="_blank" class="connect-link">
-                            <div class="connect-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="connect-platform">X / Twitter</div>
-                                <div class="connect-handle">@gofordylan</div>
-                            </div>
-                        </a>
-                        <a href="https://warpcast.com/limes.eth" target="_blank" class="connect-link">
-                            <div class="connect-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M3 7.5V5.25C3 4.56 3.56 4 4.25 4h15.5c.69 0 1.25.56 1.25 1.25V7.5h-1.5v10.25c0 .69-.56 1.25-1.25 1.25h-4.5v-1.5h4.25V7.5h-12v10h4.25v1.5h-4.5c-.69 0-1.25-.56-1.25-1.25V7.5H3z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="connect-platform">Farcaster</div>
-                                <div class="connect-handle">@limes.eth</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                <a href="https://wibtal.com" target="_blank" class="view-more-link">
+                    View all posts
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
             </div>
         </main>
     </div>
@@ -919,7 +661,6 @@
         // Tab switching
         const tabs = document.querySelectorAll('.nav-tab');
         const panels = document.querySelectorAll('.tab-panel');
-        const gotoButtons = document.querySelectorAll('[data-goto]');
 
         function switchTab(tabId) {
             tabs.forEach(t => t.classList.remove('active'));
@@ -931,10 +672,6 @@
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => switchTab(tab.dataset.tab));
-        });
-
-        gotoButtons.forEach(btn => {
-            btn.addEventListener('click', () => switchTab(btn.dataset.goto));
         });
     </script>
 </body>
