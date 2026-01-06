@@ -235,15 +235,23 @@
         }
 
         .home-content {
-            max-width: 560px;
+            max-width: 700px;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .home-text {
+            flex: 1;
         }
 
         .home-image {
-            width: 140px;
-            height: 140px;
+            width: 220px;
+            height: 220px;
             border-radius: 24px;
             overflow: hidden;
-            margin-bottom: 1.5rem;
+            flex-shrink: 0;
             box-shadow: 0 12px 40px rgba(92, 64, 51, 0.18);
             border: 3px solid var(--cream-dark);
         }
@@ -357,46 +365,37 @@
 
         /* WRITING PANEL */
         .writing-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 2rem;
-            max-width: 600px;
         }
 
         .writing-card {
             display: flex;
-            align-items: flex-start;
-            gap: 1.25rem;
-            padding: 1.5rem;
+            flex-direction: column;
             background: var(--cream-dark);
             border-radius: 16px;
             transition: all 0.2s ease;
             border: 1px solid transparent;
+            overflow: hidden;
         }
 
         .writing-card:hover {
             background: var(--cream);
             border-color: var(--terracotta);
             box-shadow: 0 8px 32px rgba(92, 64, 51, 0.1);
-            transform: translateX(8px);
+            transform: translateY(-4px);
         }
 
-        .writing-number {
-            font-family: 'Fraunces', serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--terracotta);
-            opacity: 0.6;
-            flex-shrink: 0;
-        }
-
-        .writing-card:hover .writing-number {
-            opacity: 1;
+        .writing-card-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
         }
 
         .writing-card-content {
-            flex: 1;
+            padding: 1.25rem;
         }
 
         .writing-card-title {
@@ -491,6 +490,10 @@
                 text-align: center;
             }
 
+            .home-text {
+                display: contents;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
@@ -556,17 +559,18 @@
                     <div class="home-image">
                         <img src="assets/images/profile.jpg" alt="Dylan Brodeur">
                     </div>
-                    <h2 class="home-greeting">Hi, I'm <span>Dylan</span></h2>
-                    <p class="home-description">
-                        I enjoy building crypto products, cultivating community, and fitness competitions. Currently I'm working on WannaBet and want to see it become an industry standard for signaling skin in the game.
-                    </p>
+                    <div class="home-text">
+                        <h2 class="home-greeting">Hi, I'm <span>Dylan</span></h2>
+                        <p class="home-description">
+                            I enjoy building crypto products, cultivating community, and fitness competitions. Currently working to make <a href="https://farcaster.xyz/miniapps/E7dxAafMr7wy/wannabet" target="_blank" style="color: var(--terracotta); text-decoration: underline;">WannaBet</a> a standard for showing skin in the game.
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <!-- PROJECTS -->
             <div id="projects" class="tab-panel">
                 <div class="panel-header">
-                    <span class="panel-label">What I'm building</span>
                     <h2 class="panel-title">Projects</h2>
                 </div>
                 <div class="projects-grid">
@@ -581,7 +585,7 @@
                             </div>
                             <h3 class="project-title">WannaBet</h3>
                             <p class="project-description">
-                                Peer-to-peer betting with USDC escrow and judge-based resolution. Available as a Farcaster mini-app.
+                                Peer-to-Peer betting app. Bet on anything using USDC, lock funds in escrow, and resolve them via an agreed-upon judge. It's social, transparent, and simple. Currently available as a Farcaster mini-app.
                             </p>
                         </div>
                     </article>
@@ -594,9 +598,9 @@
                             <div class="project-meta">
                                 <span class="project-year">2025</span>
                             </div>
-                            <h3 class="project-title">Movie Club</h3>
+                            <h3 class="project-title">Book Club</h3>
                             <p class="project-description">
-                                Find films and friends by adding your favorite movies. Only on Farcaster.
+                                Farcaster mini-app for catered suggestions on books and on people. Add your favorite books and find who on the network has the same favorites. Also view the book leaderboard on what the most loved books are.
                             </p>
                         </div>
                     </article>
@@ -611,7 +615,7 @@
                             </div>
                             <h3 class="project-title">SafeNotes</h3>
                             <p class="project-description">
-                                Bringing transparency to DAO transactions. Used by ENS and Uniswap.
+                                Adds category and description fields to your transactions from your SAFEs. Show accountability and transparency for all DAO transactions by explaining the "why" behind all the transfers. Used by ENS and Uniswap.
                             </p>
                         </div>
                     </article>
@@ -621,34 +625,33 @@
             <!-- WRITING -->
             <div id="writing" class="tab-panel">
                 <div class="panel-header">
-                    <span class="panel-label">Favorites</span>
                     <h2 class="panel-title">Writing</h2>
                 </div>
                 <div class="writing-grid">
-                    <a href="https://wibtal.com/19" target="_blank" class="writing-card">
-                        <span class="writing-number">01</span>
+                    <a href="https://wibtal.com/79" target="_blank" class="writing-card">
+                        <img src="assets/images/writing-eyes.jpg" alt="Developing the Eyes to See" class="writing-card-image">
                         <div class="writing-card-content">
-                            <h3 class="writing-card-title">The Case for Betting on Yourself</h3>
-                            <p class="writing-card-excerpt">Why putting skin in the game changes everything about how you approach goals.</p>
+                            <h3 class="writing-card-title">Developing the Eyes to See</h3>
+                            <p class="writing-card-excerpt">What I've Been Thinking About Lately #79</p>
                         </div>
                     </a>
                     <a href="https://wibtal.com/46" target="_blank" class="writing-card">
-                        <span class="writing-number">02</span>
+                        <img src="assets/images/writing-advice.jpg" alt="Make Your Own Advice" class="writing-card-image">
                         <div class="writing-card-content">
-                            <h3 class="writing-card-title">Building in Public</h3>
-                            <p class="writing-card-excerpt">Lessons from sharing the journey of building WannaBet with the community.</p>
+                            <h3 class="writing-card-title">Make Your Own Advice</h3>
+                            <p class="writing-card-excerpt">What I've Been Thinking About Lately #46</p>
                         </div>
                     </a>
-                    <a href="https://wibtal.com/79" target="_blank" class="writing-card">
-                        <span class="writing-number">03</span>
+                    <a href="https://wibtal.com/19" target="_blank" class="writing-card">
+                        <img src="assets/images/writing-cube.jpg" alt="Lessons From the Cube" class="writing-card-image">
                         <div class="writing-card-content">
-                            <h3 class="writing-card-title">Community Over Competition</h3>
-                            <p class="writing-card-excerpt">How fitness challenges taught me the power of shared accountability.</p>
+                            <h3 class="writing-card-title">Lessons From the Cube</h3>
+                            <p class="writing-card-excerpt">What I've Been Thinking About Lately #19</p>
                         </div>
                     </a>
                 </div>
                 <a href="https://wibtal.com" target="_blank" class="view-more-link">
-                    View all posts
+                    View all posts on wibtal.com
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
