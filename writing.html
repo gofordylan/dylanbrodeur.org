@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Writing by Dylan Brodeur">
+    <title>Writing - Dylan Brodeur</title>
+
+    <meta property="og:title" content="Writing - Dylan Brodeur">
+    <meta property="og:description" content="Writing by Dylan Brodeur">
+    <meta property="og:image" content="https://dylanbrodeur.org/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://dylanbrodeur.org/writing">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="/" class="site-name">Dylan Brodeur</a>
+            <div class="nav-links">
+                <a href="/writing.html" class="active">Writing</a>
+                <a href="/projects.html">Projects</a>
+            </div>
+        </nav>
+
+        <main>
+            <h1>Writing</h1>
+            <div class="writing-header">
+                <p>Posts from my newsletter, <a href="https://wibtal.com" target="_blank">What I've Been Thinking About Lately</a>.</p>
+            </div>
+
+            <div id="writing-archive"></div>
+            <a href="https://wibtal.com" target="_blank" class="view-all">View more on wibtal.com &rarr;</a>
+        </main>
+    </div>
+
+    <script src="js/rss.js"></script>
+    <script>loadWritingPage();</script>
+</body>
+</html>
