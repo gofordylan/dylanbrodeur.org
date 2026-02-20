@@ -35,9 +35,11 @@ function parseItems(xml) {
         const link = item.querySelector('link')?.textContent?.trim() || '';
         const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
         const date = pubDate ? new Date(pubDate) : null;
+        const content = item.getElementsByTagNameNS('http://purl.org/rss/1.0/modules/content/', 'encoded')[0]?.textContent?.trim() || '';
+        const slug = link.split('/').pop() || '';
 
         if (title) {
-            posts.push({ title, link, date });
+            posts.push({ title, link, date, content, slug });
         }
     });
 
@@ -56,9 +58,7 @@ function renderPostList(posts, container) {
     posts.forEach(post => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.href = post.link;
-        a.target = '_blank';
-        a.rel = 'noopener';
+        a.href = '/writing.html?post=' + encodeURIComponent(post.slug);
         a.innerHTML = `
             <span class="post-title">${post.title}</span>
             <span class="post-date">${formatDate(post.date)}</span>
@@ -72,6 +72,18 @@ function renderPostList(posts, container) {
 
 function renderFallback(container, message) {
     container.innerHTML = `<p class="loading">${message} <a href="https://wibtal.com" target="_blank">Read on wibtal.com &rarr;</a></p>`;
+}
+
+function renderArticle(post, container) {
+    container.innerHTML = `
+        <article class="article">
+            <a href="/writing.html" class="back-link">&larr; All posts</a>
+            <h1 class="article-title">${post.title}</h1>
+            <p class="article-date">${formatDate(post.date)}</p>
+            <div class="article-body">${post.content}</div>
+            <a href="${post.link}" target="_blank" class="article-source">Read on wibtal.com &rarr;</a>
+        </article>
+    `;
 }
 
 // Home page: 5 recent posts
@@ -97,12 +109,15 @@ async function loadHomePage() {
     renderPostList(posts.slice(0, 5), recentEl);
 }
 
-// Writing page: full archive grouped by year
+// Writing page: archive or single post
 async function loadWritingPage() {
     const archiveEl = document.getElementById('writing-archive');
     if (!archiveEl) return;
 
-    archiveEl.innerHTML = '<p class="loading">Loading posts...</p>';
+    const params = new URLSearchParams(window.location.search);
+    const postSlug = params.get('post');
+
+    archiveEl.innerHTML = '<p class="loading">Loading...</p>';
 
     const xml = await fetchFeed();
     if (!xml) {
@@ -116,7 +131,27 @@ async function loadWritingPage() {
         return;
     }
 
-    // Group by year
+    // Single post view
+    if (postSlug) {
+        const post = posts.find(p => p.slug === postSlug);
+        if (post) {
+            document.title = post.title + ' - Dylan Brodeur';
+            // Hide the page header
+            const header = document.querySelector('.writing-header');
+            if (header) header.style.display = 'none';
+            const pageTitle = document.querySelector('main > h1');
+            if (pageTitle) pageTitle.style.display = 'none';
+            const viewMore = document.querySelector('.view-all');
+            if (viewMore) viewMore.style.display = 'none';
+
+            archiveEl.innerHTML = '';
+            renderArticle(post, archiveEl);
+            window.scrollTo(0, 0);
+            return;
+        }
+    }
+
+    // Archive view: group by year
     const groups = {};
     posts.forEach(post => {
         const year = post.date ? post.date.getFullYear() : 'Unknown';
@@ -126,7 +161,6 @@ async function loadWritingPage() {
 
     archiveEl.innerHTML = '';
 
-    // Sort years descending
     const years = Object.keys(groups).sort((a, b) => b - a);
     years.forEach(year => {
         const section = document.createElement('div');
