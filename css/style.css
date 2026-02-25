@@ -195,8 +195,8 @@ main {
     border-bottom: 1px solid var(--border);
 }
 
-.project:first-of-type {
-    border-top: 1px solid var(--border);
+.writing-header + .project {
+    padding-top: 0;
 }
 
 .project-header {
