@@ -1,6 +1,15 @@
 const FEED_URL = 'https://gofordylan.com/feed';
 
 async function fetchFeed() {
+    // Local copy of the Substack feed, refreshed on a schedule
+    try {
+        const res = await fetch('/feed.xml?t=' + Date.now());
+        if (res.ok) {
+            const text = await res.text();
+            if (text.includes('<rss')) return text;
+        }
+    } catch (e) { /* fall back */ }
+
     // Try direct fetch first
     try {
         const res = await fetch(FEED_URL);
