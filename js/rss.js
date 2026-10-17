@@ -1,4 +1,4 @@
-const FEED_URL = 'https://api.paragraph.com/blogs/rss/@wibtal.com';
+const FEED_URL = 'https://gofordylan.com/feed';
 
 async function fetchFeed() {
     // Try direct fetch first
@@ -71,7 +71,7 @@ function renderPostList(posts, container) {
 }
 
 function renderFallback(container, message) {
-    container.innerHTML = `<p class="loading">${message} <a href="https://wibtal.com" target="_blank">Read on wibtal.com &rarr;</a></p>`;
+    container.innerHTML = `<p class="loading">${message} <a href="https://gofordylan.com" target="_blank">Read on gofordylan.com &rarr;</a></p>`;
 }
 
 function renderArticle(post, container) {
@@ -81,7 +81,7 @@ function renderArticle(post, container) {
             <h1 class="article-title">${post.title}</h1>
             <p class="article-date">${formatDate(post.date)}</p>
             <div class="article-body">${post.content}</div>
-            <a href="${post.link}" target="_blank" class="article-source">Read on wibtal.com &rarr;</a>
+            <a href="${post.link}" target="_blank" class="article-source">Read on gofordylan.com &rarr;</a>
         </article>
     `;
 }
